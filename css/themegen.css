@@ -1,0 +1,88 @@
+@import url("https://raw.githack.com/codedotspectra/discordneutron/master/importCSS/xcore.css");
+.da-channelTextArea {display: block;height: 45px;top: 2px;}
+.erd_scroll_detection_container > div::-webkit-scrollbar { display: none; }
+
+.erd_scroll_detection_container_animation_active { -webkit-animation-duration: 0.1s; animation-duration: 0.1s; -webkit-animation-name: erd_scroll_detection_container_animation; animation-name: erd_scroll_detection_container_animation; }
+@-webkit-keyframes erd_scroll_detection_container_animation { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes erd_scroll_detection_container_animation { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+.form-control {
+  background: rgba(0,0,0,.5) !important;
+  border-color: rgba(0,0,0,.2);
+  border-width: 1px !important;
+  color: #fff !important;
+}
+#accordion-wrapper label {margin: 5px 0 5px 0;}
+a {color: var(--PrimaryColor);}
+.previewContainer {
+  padding: 10px 5px 10px 5px;
+}
+nav * {letter-spacing: normal;}
+#accordion-wrapper {
+  left: 0;
+  top:0;
+  display: inline-block;
+  position: relative;
+  width: 25%;
+  background-color: var(--BackgroundColor04);
+  overflow: hidden;
+  height: 800px;
+  max-height: 800px;
+}
+#accordion-wrapper:hover {
+  overflow-y: scroll;
+}
+#app-mount {
+  max-width: 95%;
+  max-height: 650px;
+}
+#preview-wrapper {
+  right: 0;
+  top:0;
+  position: relative;
+  display: inline-block;
+  float: right;
+  width: 75%;
+  height: 100%;
+  background-color: transparent;
+  padding: 25px;
+  max-width: 75%;
+  max-height: 100%;
+}
+#content-wrapper {
+  min-height: 800px;
+}
+input[type="color"]{
+  background: rgba(0,0,0,.5);
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 4px 0 0 4px;
+  padding: 5px;
+  height: 34px;
+  display: inline-block;
+  cursor: pointer;
+  width: 20%;
+}
+input:focus {
+  box-shadow: none !important;
+  border-color: var(--PrimaryColor) !important;
+}
+.input-group .form-control {
+  float: right;
+  width: 80%;
+}
+.transparent {
+  border-radius: 5px;
+  border: 2px solid rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.3);
+  color: #f5f5f5;
+  padding: 10px;
+}
+.greenTransparent {border-color: rgba(0, 179, 60,0.5);background-color:  rgba(0, 179, 60,0.3)}
+.redTransparent {border-color: rgba(255, 0, 0,0.5);background-color:  rgba(255, 0, 0,0.3)}
+.modal-dialog {z-index: 1500 !important;}
+#navbar *,
+#accordion-wrapper * {
+  font: inherit !important;
+}
+#genBody {
+  overflow-y: scroll !important;
+}
