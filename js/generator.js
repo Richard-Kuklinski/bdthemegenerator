@@ -18,7 +18,7 @@ function generateCode(download) {
       brightness: document.getElementById('brightness').value,
       font: font.trim(),
       pcolor1: document.getElementById('colorPrimary1').value,
-      pcolor1t: document.getElementById('colorPrimary1T').value,
+      pcolor1t: document.getElementById('colorPrimary1').value,
       pcolor2: document.getElementById('colorPrimary2').value,
       danger: document.getElementById('colorDanger1').value,
       warning: document.getElementById('colorWarning1').value,
@@ -43,7 +43,7 @@ function generateCode(download) {
       bg4: document.getElementById('NTBackgroundColor04').value,
   }
 
-  let code = "";
+  var code = "";
 
   if(download){
     code += '@import url("https://raw.githack.com/codedotspectra/discordneutron/master/importCSS/xcore.css");\n';
@@ -72,6 +72,12 @@ function generateCode(download) {
     code += `--PrimaryColor01: ${params.pcolor1};\n`;
   }
   if(!(params.pcolor1t == "" || params.pcolor1t == null)) {
+    if(params.pcolor1t.substring(0,1) == "#"){
+      params.pcolor1t = hexToRgbA(params.pcolor1t);
+    } else if(params.pcolor1t.substring(0,4) == "rgb(") {
+      params.pcolor1t = params.pcolor1t.replace(")",",.15)");
+      params.pcolor1t = params.pcolor1t.replace("rgb(","rgba(");
+    }
     code += `--PrimaryColorRGBA: ${params.pcolor1t};\n`;
   }
   if(!(params.pcolor2 == "" || params.pcolor2 == null)) {
@@ -144,6 +150,18 @@ function generateCode(download) {
   code += "}";
 
   return code;
+}
+
+function hexToRgbA(hex){
+    var c;
+    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+        c= hex.substring(1).split('');
+        if(c.length== 3){
+            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+        }
+        c= '0x'+c.join('');
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',.15)';
+    }
 }
 
 function updatePreview() {
