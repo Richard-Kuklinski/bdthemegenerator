@@ -15,6 +15,9 @@
     <link rel="icon" href="https://discordapp.com/assets/07dca80a102d4149e9736d4b162cff6f.ico">
     <link rel="stylesheet" href="css/global.css">
     <title>Discord Preview</title>
+    <style media="screen" id="miniThemes">
+
+    </style>
     <style media="screen" id="preview">
 
     </style>
@@ -36,7 +39,6 @@
            <li><a href="https://discord.gg/nfggDZz" target="_blank">Support</a></li>
          </ul>
          <button class="btn btn-warning navbar-btn" onclick="notImplementedYet()">Import</button>
-         <button class="btn btn-success navbar-btn" onclick="notImplementedYet()">Save</button>
          <button class="btn btn-primary navbar-btn" onclick="download()">Download</button>
        </div>
       </nav>
@@ -221,26 +223,6 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="colorDefault">Default</label>
-                  <div class="input-group">
-                    <input type="color" id="CPcolorDefault" onchange="changeValue('colorDefault',this.value)">
-                    <input class="form-control" type="text" id="colorDefault" value="" placeholder="rgb, hex" onchange="changeValue('CPcolorDefault',this.value)">
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label for="colorDefault2">Default (Darker)</label>
-                  <div class="input-group">
-                    <input type="color" id="CPcolorDefault2" onchange="changeValue('colorDefault2',this.value)">
-                    <input class="form-control" type="text" id="colorDefault2" value="" placeholder="rgb, hex" onchange="changeValue('CPcolorDefault2',this.value)">
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <div id="textscolors">
@@ -359,16 +341,76 @@
            <p class="transparent redTransparent">not yet ¯\_(ツ)_/¯</p>
           </div>
         </div>
-        <div id="guilds">
-          <button class="accordion">Guilds Styles</button>
-          <div class="panel">
-            <p class="transparent redTransparent">not yet ¯\_(ツ)_/¯</p>
-          </div>
-        </div>
         <div id="minithemes">
           <button class="accordion">Mini themes</button>
           <div class="panel">
-           <p class="transparent redTransparent">not yet ¯\_(ツ)_/¯</p>
+           <div class="row">
+             <h3>Default Size</h3>
+             <div class="col-sm-6">
+               <label class="checkbox">Servers
+                 <input type="checkbox" id="dss" onclick="updateMiniThemes()">
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+             <div class="col-sm-6">
+               <label class="checkbox">Top Bar
+                 <input type="checkbox" id="dstb" onclick="updateMiniThemes()">
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+           <div class="row">
+             <h3>Server Grid</h3>
+             <div class="col-sm-4">
+               <div class="radio">
+                 <label><input type="radio" name="optradio" id="radioGrid1" onclick="updateMiniThemes()">Default</label>
+               </div>
+             </div>
+             <div class="col-sm-4">
+               <div class="radio">
+                 <label><input type="radio" name="optradio" id="radioGrid2" onclick="updateMiniThemes()">2 Columns</label>
+               </div>
+             </div>
+             <div class="col-sm-4">
+               <div class="radio">
+                 <label><input type="radio" name="optradio" id="radioGrid3" onclick="updateMiniThemes()">3 Columns</label>
+               </div>
+             </div>
+           </div>
+           <div class="row">
+             <h3>Compact Lists</h3>
+             <div class="col-sm-6">
+               <label class="checkbox">Channels
+                 <input type="checkbox" id="ccl" onclick="updateMiniThemes()">
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+             <div class="col-sm-6">
+               <label class="checkbox">Member
+                 <input type="checkbox" id="cml" onclick="updateMiniThemes()">
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+           <div class="row">
+             <h3> </h3>
+             <div class="col-sm-12">
+               <label class="checkbox">See Trough Background
+                 <input type="checkbox" id="stb" onclick="updateMiniThemes()">
+                 <span class="checkmark"></span>
+               </label>
+             </div>
+           </div>
+           <div class="row">
+             <p class="transparent warningTransparent">
+               Preview might be buggy with server grids
+             </p>
+             <p class="transparent redTransparent">
+               You need to enable "Enable Transparency" option<br>
+               in BetterDiscord setting (and restart)<br>
+               for the see Trough mini-theme to work
+             </p>
+           </div>
           </div>
         </div>
       </div>
@@ -1288,7 +1330,12 @@
     </div>
 
     <footer class="text-center">
-      <p>Made by Spectra#7698 - 2018<br>Thanks to qwersad/Mioni for the javascript download code</p>
+      <p>
+        Made by Spectra#7698 - 2018<br>
+        Thanks to qwersad/Mioni for the javascript download code<br>
+        Thanks to jiiks for the 2-3 columns server grid mini-themes (Normal size guild icons)<br>
+        Thanks to Satoru for the compact channels list mini theme base
+      </p>
       <ul class="social-links">
         <li><a href="https://github.com/codedotspectra" class="github" target="_blank"><span class="fui-github"></span> Gituhb</a></li>
         <li><a href="https://twitter.com/codedotspectra" class="twitter" target="_blank"><span class="fui-twitter"></span> Twitter</a></li>
