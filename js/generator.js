@@ -1,20 +1,23 @@
 /*
 
-OMG THIS CODE IS HORRIBLE.
-yes.
+"OMG THIS CODE IS HORRIBLE"
+:c
 
 */
-// Functions
 function notImplementedYet() {
   alert('Not implemented yet :/');
 }
 
-function generateCode() {
+function showTutorial() {
+  alert('--- How to use ---\n• Enter you theme\'s name\n• Change images/colors/etc to you liking\n(Follow instructions in red boxes)\n• To use color picker click on colored squares\nnext to inputs\n--- Import Themes ---\n• click on import and choose the theme you want\nto modify\nMUST BE BASED ON NEUTRON X');
+}
+
+function generateCode(background, homebutton) {
   let font = document.getElementById('customFont').value;
 
   let params = {
-      bgimage: document.getElementById('bURL').value,
-      hbimage: document.getElementById('hbURL').value,
+      bgimage: background,
+      hbimage: homebutton,
       brightness: document.getElementById('brightness').value,
       font: font.trim(),
       pcolor1: document.getElementById('colorPrimary1').value,
@@ -152,8 +155,18 @@ function hexToRgbA(hex){
     }
 }
 
-function updatePreview() {
-  document.getElementById("preview").innerHTML = generateCode(false);
+async function updatePreview() {
+  let background;
+  if (document.getElementById('selectBImage').value == "file") {
+      background = await getBase64(document.getElementById('bFile').files[0]);
+  } else {background = document.getElementById('bURL').value;}
+
+  let hbBackground;
+  if (document.getElementById('selectHbImage').value == "file") {
+      hbBackground = await getBase64(document.getElementById('hbFile').files[0]);
+  } else {hbBackground = document.getElementById('hbURL').value;}
+
+  document.getElementById("preview").innerHTML = generateCode(background, hbBackground);
 }
 
 function changeValue(inputID, value) {
@@ -199,7 +212,7 @@ function dlFile(mime, text, name) {
     URL.revokeObjectURL(a.href);
 }
 
-function updateMiniThemes() {
+async function updateMiniThemes() {
   document.getElementById('miniThemes').innerHTML = generateMiniThemes();
 }
 
@@ -237,4 +250,58 @@ function generateMiniThemes() {
   }
 
   return mt;
+}
+
+async function getBase64(file) {
+    return new Promise((resolve, reject) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    });
+}
+
+function mime(b64) {
+    return b64.split(';')[0].split(':')[1];
+}
+
+async function verifyUrl(id) {
+    let URL = document.getElementById(id).value;
+    if(!(URL == "" || URL == null)){
+      let urlEnd = URL.substring(URL.length-4, URL.length);
+      if(!(urlEnd == ".jpg" || urlEnd == ".png" || urlEnd == ".gif")){
+        alert('-- invalid url --');
+      } else {
+        updatePreview();
+      }
+    }
+}
+async function verifyFile(id) {
+    let file = await getBase64(document.getElementById(id).files[0]);
+    if (mime(file).split('/')[0] != 'image') {
+        alert('-- File is invalid --');
+    } else {
+        updatePreview();
+    }
+}
+
+
+function selectImageMethod(id) {
+  if(id == 'selectBImage') {
+    if(document.getElementById(id).value == "url"){
+      document.getElementById('bImageUrlInput').style.display = "block";
+      document.getElementById('bImageFileInput').style.display = "none";
+    } else {
+      document.getElementById('bImageFileInput').style.display = "block";
+      document.getElementById('bImageUrlInput').style.display = "none";
+    }
+  } else {
+    if(document.getElementById(id).value == "url"){
+      document.getElementById('hbImageUrlInput').style.display = "block";
+      document.getElementById('hbImageFileInput').style.display = "none";
+    } else {
+      document.getElementById('hbImageFileInput').style.display = "block";
+      document.getElementById('hbImageUrlInput').style.display = "none";
+    }
+  }
 }
