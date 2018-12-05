@@ -246,6 +246,10 @@ function generateMiniThemes() {
     mt += "@import url('https://raw.githack.com/codedotspectra/discordneutron/master/mini-themes/seeThroughBackground.css');\n";
   }
 
+  if(document.getElementById('statusStyles').value == "rounded"){
+    mt += "@import url('https://raw.githack.com/codedotspectra/discordneutron/master/mini-themes/statusRounded.css');\n";
+  }
+
   return mt;
 }
 

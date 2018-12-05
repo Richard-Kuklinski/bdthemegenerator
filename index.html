@@ -114,7 +114,9 @@
                       .png<br>
                       .gif<br>
                       <br>
-                      GIFs are heavier on CPU than other formats
+                      GIFs are heavier on CPU than other formats<br><br>
+                      Warning: some websites prevent images hotlink<br>
+                      if the url don't work, download the image and use the file or upload it to imgur
                     </p>
                   </div>
                 </div>
@@ -404,16 +406,17 @@
             <div id="status">
               <button class="accordion">Status Styles</button>
               <div class="panel">
-               <!--<div class="row">
+               <div class="row">
                  <div class="col-sm-12">
-                   <select class="form-control" id="selectStatus" style="margin:15px 0 15px 0;">
+                   <select class="form-control" id="statusStyles" style="margin:15px 0 15px 0;" onchange="updateMiniThemes()">
                      <option value="default">Default</option>
-                     <option value="style1">Style 1</option>
-                     <option value="style2">Style 2</option>
+                     <option value="rounded">Rounded</option>
                    </select>
+                   <p class="transparent warningTransparent">
+                     More styles will be added later
+                   </p>
                  </div>
-               </div>-->
-               <p class="transparent redTransparent">Not yet.</p>
+               </div>
               </div>
             </div>
             <div id="minithemes">
@@ -478,7 +481,9 @@
                </div>
                <div class="row">
                  <p class="transparent warningTransparent">
-                   Preview might be buggy with server grids
+                   Preview might be buggy with server grids<br>
+                   A "must have" mini-theme is missing ? please let me know<br>
+                   <a href="https://discord.gg/nfggDZz/">Here</a>
                  </p>
                  <p class="transparent redTransparent">
                    You need to enable "Enable Transparency" option<br>
