@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Colorize Color Tool">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:description" content="An easy way to change the colors of the Colorize Rebon theme">
+    <meta name="theme-color" content="#1a53ff">
+    <title>Colorize Theme colors tool</title>
+    <style media="screen">
+      .demo,
+      .inputs {display:block;}
+      label,
+      .form-control {
+        top: -3.5px;
+        position: relative;
+      }
+      .demo-block {
+        position: relative;
+        height: 220px;
+        width: 50px;
+        top: 0;
+        color: #fff;
+        display: table-cell;
+        margin:0;
+      }
+      #d1 {background-color: #202225;}
+      #d2 {background-color: #2f3136;}
+      #d3 {background-color: #36393f;}
+      #d4 {background-color: #72767d;}
+      #d5 {background-color: #7289da;}
+      .texts {
+        background-color: #36393f;
+        width: 250px;
+        padding: 10px;
+        box-sizing: border-box;
+        display: table-cell;
+      }
+      .texts p {
+        display: block;
+      }
+      #tchat {color: hsla(0, 100%, 100%, .8);}
+      #tdefault {color: hsla(0, 100%, 100%, .6);}
+      #tdark {color: hsla(0, 100%, 100%, .2);}
+      #tselected {color: hsla(0, 100%, 100%, .95);}
+      #tcateg {color: hsla(0, 100%, 100%, .35);}
+      #links {color: #0096cf;}
+      .gradient {display: table-cell;}
+    </style>
+  </head>
+  <body>
+    <h1>Colorize Reborn colors generator</h1>
+    <p>This tools help your create nice colors for the Colorize Reborn theme</p>
+    <div class="inputs">
+      <h2>Color values</h2>
+      <p>click buttons to change color</p>
+      <div class="input-group">
+        <input type="color" id="bgColorCP" value="#2f3136" onchange="changeBcolors()">
+        <label for="bgColor">Background color</label>
+      </div>
+      <div class="input-group">
+        <input type="color" id="brandColorCP" value="#7289da" onchange="changepColor()">
+        <label for="brandColor">Primary Color</label>
+      </div>
+      <div class="input-group">
+        <input type="color" id="textColorCP" value="#ffffff" onchange="changeTexts()">
+        <label for="textColor">Text Color</label>
+      </div>
+      <div class="input-group">
+        <input type="color" id="linksCP" value="#0096cf" onchange="changeTexts()">
+        <label for="textColor">Links Color</label>
+      </div>
+    </div>
+    <div class="demo">
+      <h2>Result</h2>
+      <div class="gradient">
+        <div class="demo-block" id="d1"></div>
+        <div class="demo-block" id="d2"></div>
+        <div class="demo-block" id="d3">
+          picked color
+        </div>
+        <div class="demo-block" id="d4"></div>
+        <div class="demo-block" id="d5"></div>
+      </div>
+      <div id="textsContainer" class="texts">
+        <p id="tselected">Selected texts</p>
+        <p id="tchat">Chat texts</p>
+        <p id="tdefault">Default texts (picked color)</p>
+        <p id="tcateg">other texts</p>
+        <p id="tdark">Dark texts</p>
+        <p id="links">Links</p>
+      </div>
+    </div>
+    <div class="code">
+      <h2>Code</h2>
+      <p>copy this code in the theme file or in your custom css editor</p>
+      <p>
+        :root {<br>
+        --bgColor05: <span id="bg5">#202225</span>;<br>
+        --bgColor04: <span id="bg4">#2f3136</span>;<br>
+        --bgColor03: <span id="bg3">#36393f</span>;<br>
+        --bgColor01: <span id="bg1">#72767d</span>;<br>
+        --colorBrand: <span id="cb">#7289da</span>;<br>
+        --colorBrandTransparent: <span id="cbt">rgba(114, 137, 218,.3)</span>;<br>
+        --links: <span id="slinks">#0096cf</span>;<br>
+        --ChatTextColor: <span id="stchat">hsla(0, 100%, 100%, .8)</span>;<br>
+        --ChannelsSelectedTextColor: <span id="stselected">hsla(0, 100%, 100%, .95)</span>;<br>
+        --ChannelsDefaultTextColor: <span id="stdefault">hsla(0, 100%, 100%, .6)</span>;<br>
+        --ChannelsDarkTextColor: <span id="stdark">hsla(0, 100%, 100%, .2)</span>;<br>
+        --membersListTextsColor: <span id="stcateg">hsla(0, 100%, 100%, .35)</span>;<br>
+        }
+      </p>
+    </div>
+    <script type="text/javascript">
+      function changepColor() {
+        document.getElementById('cb').innerHTML = document.getElementById('brandColorCP').value;
+        document.getElementById('d5').style.backgroundColor = document.getElementById('brandColorCP').value;
+        document.getElementById('cbt').innerHTML = hexToRgbA(document.getElementById('brandColorCP').value);
+      }
+      function changeTexts() {
+        let color = document.getElementById('textColorCP').value;
+        document.getElementById('tselected').style.color = ColorLuminance(color, 0.3);
+        document.getElementById('tchat').style.color = ColorLuminance(color, 0.2);
+        document.getElementById('tdefault').style.color = color;
+        document.getElementById('tcateg').style.color = ColorLuminance(color, -0.2);
+        document.getElementById('tdark').style.color = ColorLuminance(color, -0.3);
+        document.getElementById('links').style.color = document.getElementById('linksCP').value;
+
+        document.getElementById('stchat').innerHTML = ColorLuminance(color, 0.3);
+        document.getElementById('stselected').innerHTML = ColorLuminance(color, 0.2);
+        document.getElementById('stdefault').innerHTML = color;
+        document.getElementById('stdark').innerHTML = ColorLuminance(color, -0.3);
+        document.getElementById('stcateg').innerHTML = ColorLuminance(color, -0.2);
+        document.getElementById('slinks').innerHTML = document.getElementById('linksCP').value;
+      }
+      function changeBcolors() {
+        let cpValue = document.getElementById('bgColorCP').value;
+        document.getElementById('d1').style.backgroundColor = ColorLuminance(cpValue, -0.35);
+        document.getElementById('bg5').innerHTML = ColorLuminance(cpValue, -0.35);
+
+        document.getElementById('d2').style.backgroundColor = ColorLuminance(cpValue, -0.15);
+        document.getElementById('bg4').innerHTML = ColorLuminance(cpValue, -0.15);
+
+        document.getElementById('d3').style.backgroundColor = cpValue;
+        document.getElementById('bg3').innerHTML = cpValue;
+        document.getElementById('textsContainer').style.backgroundColor = cpValue;
+
+        document.getElementById('d4').style.backgroundColor = ColorLuminance(cpValue, 0.3);
+        document.getElementById('bg1').innerHTML = ColorLuminance(cpValue, 0.3);
+      }
+      function ColorLuminance(hex, lum) {
+      	hex = String(hex).replace(/[^0-9a-f]/gi, '');
+      	if (hex.length < 6) {
+      		hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+      	}
+      	lum = lum || 0;
+      	var rgb = "#", c, i;
+      	for (i = 0; i < 3; i++) {
+      		c = parseInt(hex.substr(i*2,2), 16);
+      		c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+      		rgb += ("00"+c).substr(c.length);
+      	}
+
+      	return rgb;
+      }
+      function hexToRgbA(hex){
+          var c;
+          if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+              c= hex.substring(1).split('');
+              if(c.length== 3){
+                  c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+              }
+              c= '0x'+c.join('');
+              return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',.2)';
+          }
+      }
+    </script>
+  </body>
+</html>
