@@ -1,5 +1,5 @@
-# Better Discord Theme Generator
+# Better Discord Theme Generator v2
 
-web tool to help you make themes
+This tool is made to help you create beautiful themes for Discord
 
-Website : https://codedotspectra.github.io/bdthemegenerator/
+link : https://codedotspectra.github.io/bdthemegenerator/
