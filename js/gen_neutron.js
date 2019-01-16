@@ -60,30 +60,6 @@ function generateCode(background, homebutton) {
   if(!(params.pcolor2 == "" || params.pcolor2 == null)) {
     code += `--PrimaryColor02: ${params.pcolor2};\n`;
   }
-  if(!(params.danger == "" || params.danger == null)) {
-    code += `--DangerColor: ${params.danger};\n`;
-  }
-  if(!(params.warning == "" || params.warning == null)) {
-    code += `--WarningColor: ${params.warning};\n`;
-  }
-  if(!(params.success == "" || params.success == null)) {
-    code += `--SuccesColor: ${params.success};\n`;
-  }
-  if(!(params.info == "" || params.info == null)) {
-    code += `--InfoColor: ${params.info};\n`;
-  }
-  if(!(params.danger2 == "" || params.danger2 == null)) {
-    code += `--DangerColor02: ${params.danger2};\n`;
-  }
-  if(!(params.warning2 == "" || params.warning2 == null)) {
-    code += `--WarningColor02: ${params.warning2};\n`;
-  }
-  if(!(params.success2 == "" || params.success2 == null)) {
-    code += `--SuccesColor02: ${params.success2};\n`;
-  }
-  if(!(params.info2 == "" || params.info2 == null)) {
-    code += `--InfoColor02: ${params.info2};\n`;
-  }
   if(!(params.links == "" || params.links == null)) {
     code += `--links: ${params.links};\n`;
   }
