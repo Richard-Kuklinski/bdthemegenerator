@@ -24,6 +24,10 @@ body,
   padding: 25px;
   height: 100%;
 }
+#bases-wrapper {
+  background-color: #2f3136;
+  height: 100%;
+}
 #app-mount {
   position: relative;
   max-width: 100%;
@@ -80,7 +84,7 @@ body,
   cursor: pointer;
 }
 .theme-infos {padding: 10px 0 0 0;}
-.menu-tab  .title {
+.title {
   font-size: 16px;
   margin-bottom: 5px;
   display: block;
@@ -88,6 +92,7 @@ body,
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
+  color: #fff;
 }
 .menu-tab .form-control {
   border: 1px solid rgba(0,0,0,.75);
@@ -420,44 +425,54 @@ select:hover {cursor: pointer;}
 }
 /* other stuff */
 .margin-bottom-30 {margin-bottom: 30px;}
-.bases .base {
-  content: "";
-  height: 350px;
-  line-height: 350px;
-  background-color: #e6e6e6;
-  padding: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  box-sizing: border-box;
+.base-preview {
+  padding: 15px;
 }
-.bases .base:not(#base-more) a {
+.preview {
   width: 100%;
   height: 100%;
   display: block;
   color: #fff;
-  font-size: 24px;
-  font-weight: bold;
+  border-radius: 3px;
+}
+.preview img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 3px;
+}
+.choose {
+  padding: 7px 0 7px 25px;
+  background-color: #202225;
+  margin: 0;
+}
+.more {
+  background-color: transparent;
+  padding: 7px 0 7px 25px;
+  margin: 0;
+}
+.more span {
+  color: #fff;
+  margin: 0;
+}
+.base [class*="col-sm-"] {color: #fff;}
+#bases-wrapper {padding: 0;}
+#bases-wrapper a {
+  display: block;
+  width: 100%;
+  height: 100%;
   transition: all .2s ease;
-  word-break: break-all;
-  text-overflow: ellipsis;
-  box-sizing: border-box;
-  border: 2px solid transparent;
-  letter-spacing: 2px;
+  padding: 5px 20px 5px 20px;
 }
-.bases .base:not(#base-more) a:hover {
-  text-decoration: none;
-  box-shadow: 0 0 25px 25px rgba(0, 0, 0, .45) inset;
-  letter-spacing: 6px;
-  border-color: #2eb82e;
+#bases-wrapper a:hover {
+  background-color: rgba(0, 0, 0, 0.5);
 }
-#base-more {
-  color: #1c1c1c;
-  pointer-events: none;
+.author {
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #224391;
+  color:#fff;
 }
-#base-neutron {background-image: url('https://i.imgur.com/LNtTeZi.jpg');}
-#base-dunes {background-image: url('https://i.imgur.com/RATfN5X.jpg');}
-#base-colorize {background-image: url('https://i.imgur.com/wIjnxPA.jpg')}
+.author-original {background-color: #38cf30;}
 /* discord preview fixes */
 .buttons-205you {
   width: 40px;

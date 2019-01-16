@@ -12,87 +12,118 @@
     <title>Theme Generator</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/lang.js"></script>
-    <script src="js/lingumania.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/glyphicons.css">
-    <style media="screen">
-      .title {
-        font-size: 16px;
-        margin-bottom: 5px;
-        display: block;
-        text-align: left;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: #fff;
-      }
-    </style>
   </head>
   <body>
-    <header>
-      <div class="row">
-        <div class="col-sm-4 text-center inline">
-          <div class="col-sm-6">
-            <span class="title">BD Theme generator</span>
+    <div class="row" id="content-wrapper">
+      <div class="col-sm-3" id="menu-wrapper">
+        <div class="menu-tab" style="transform:translateX(0);">
+          <div class="row theme-infos" style="border-top:none;border-bottom:1px solid #0c0d0e;">
+            <div class="col-sm-12">
+              <span class="title">BetterDiscord Theme generator</span>
+              <p>Choose a base theme and start creating your theme</p>
+            </div>
           </div>
-          <div class="col-sm-6">
-            <a href="https://discord.gg/Y8ZVyXz/" class="btn btn-support" style="padding:3.5px;">SUPPORT</a>
+          <div class="row">
+            <div class="col-sm-12 support-container">
+              <a href="https://discord.gg/Y8ZVyXz/" class="btn btn-support">SUPPORT / SUGGEST A THEME</a>
+            </div>
           </div>
-        </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-7 text-right">
-          <div class="col-sm-9 text">
-            <p>2019 • Jack "Spectra" Neth</p>
+          <div class="row social-container">
+            <div class="col-sm-12 text-center">
+              <ul class="social-links">
+                <li class="paypal">
+                  <a href="https://paypal.me/JackNeth" target="_blank"><span class="icon-paypal"></span></a>
+                </li>
+                <li class="twitter">
+                  <a href="https://twitter.com/codedotspectra" target="_blank"><span class="icon-twitter"></span></a>
+                </li>
+                <li class="github">
+                  <a href="https://github.com/codedotspectra" target="_blank"><span class="icon-github"></span></a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="col-sm-3">
-            <ul class="social-links">
-              <li class="paypal">
-                <a href="https://paypal.me/JackNeth" target="_blank"><span class="icon-paypal"></span></a>
-              </li>
-              <li class="twitter">
-                <a href="https://twitter.com/codedotspectra" target="_blank"><span class="icon-twitter"></span></a>
-              </li>
-              <li class="github">
-                <a href="https://github.com/codedotspectra" target="_blank"><span class="icon-github"></span></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </header>
-    <div class="row">
-      <div class="col-sm-1"></div>
-      <div class="col-sm-10 text-center">
-        <span class="title">Choose a base theme</span>
-        <div class="row bases margin-bottom-30">
-          <div class="col-sm-5 base" id="base-neutron">
-            <a href="base_neutron.html">
-              Neutron X
-            </a>
-          </div>
-          <div class="col-sm-2"></div>
-          <div class="col-sm-5 base" id="base-dunes">
-            <a href="base_dunes.html">
-              Dunes
-            </a>
-          </div>
-        </div>
-        <div class="row bases">
-          <div class="col-sm-5 base" id="base-colorize">
-            <a href="base_colorize.html">
-              Colorize
-            </a>
-          </div>
-          <div class="col-sm-2"></div>
-          <div class="col-sm-5 base" id="base-more">
-            More base themes coming soon
+          <div class="row">
+            <div class="col-sm-12 text-center footer-container" style="color:#fff;padding-top:15px;">
+              <p>2019 • Jack "Spectra" Neth</p>
+              <hr>
+              <p>
+                Thanks to Qwersad for the javascript file images codes<br>
+                Thanks to Mioni for the javascript download code<br>
+                Thanks to DevilBro for the server columns mini themes
+              </p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-1"></div>
+      <div class="col-sm-9" id="bases-wrapper">
+        <div class="bases-scroller">
+          <div class="row choose">
+            <div class="col-sm-12 text-left">
+              <span class="title">Choose a base theme</span>
+            </div>
+          </div>
+          <a href="base_neutron.html">
+            <div class="row base">
+              <div class="col-sm-5 base-preview">
+                <div class="preview">
+                  <img src="https://i.imgur.com/LNtTeZi.jpg" alt="neutron">
+                </div>
+              </div>
+              <div class="col-sm-7">
+                <h1>Neutron X</h1>
+                <p>
+                  An enhanced version of discord<br>
+                  More compact & highly customizable
+                </p>
+                by <span class="author">Spectra</span>
+              </div>
+            </div>
+          </a>
+          <a href="base_dunes.html">
+            <div class="row base">
+              <div class="col-sm-5 base-preview">
+                <div class="preview">
+                  <img src="https://i.imgur.com/RATfN5X.jpg" alt="dunes">
+                </div>
+              </div>
+              <div class="col-sm-7">
+                <h1>Dunes</h1>
+                <p>
+                  Minimalist, rounded & smooth<br>
+                  Dunes is a simple & clean theme
+                </p>
+                by <span class="author">Spectra</span>
+              </div>
+            </div>
+          </a>
+          <a href="base_colorize.html">
+            <div class="row base">
+              <div class="col-sm-5 base-preview">
+                <div class="preview">
+                  <img src="https://i.imgur.com/wIjnxPA.jpg" alt="colorize">
+                </div>
+              </div>
+              <div class="col-sm-7">
+                <h1>Colorize</h1>
+                <p>
+                  Colorize let you have the default discord ui<br>
+                  it allows you to change the backgrounds & texts colors
+                </p>
+                by <span class="author">Spectra</span>
+                Original by <span class="author author-original">Maple</span>
+              </div>
+            </div>
+          </a>
+          <div class="row more">
+            <span class="title">More base themes coming soon..</span>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
