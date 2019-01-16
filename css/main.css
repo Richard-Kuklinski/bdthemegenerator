@@ -34,6 +34,10 @@ body,
   max-height: 800px;
   z-index: 1 !important;
 }
+.menu-wrapper-fixed {
+  height: 100vh;
+  overflow: hidden;
+}
 .menu-tab {
   background-color: #202225;
   color: hsla(0,100%,100%,.85);
@@ -465,6 +469,10 @@ select:hover {cursor: pointer;}
 }
 #bases-wrapper a:hover {
   background-color: rgba(0, 0, 0, 0.5);
+}
+.bases-scroller {
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .author {
   padding: 5px;
