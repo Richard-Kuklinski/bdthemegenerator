@@ -45,10 +45,7 @@ function generateCode() {
       code += `--columns: ${params.columns};\n`;
     }
     if(!(params.serverSize == "" || params.serverSize == null)) {
-      if(params.serverSize.substring(params.serverSize.length-2,2) != "px") {
-        params.serverSize += "px";
-      }
-      code += `--serversize: ${params.serverSize};\n`;
+      code += `--guildsize: ${params.serverSize};\n`;
     }
   }
   code += "}";
