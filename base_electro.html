@@ -9,11 +9,11 @@
     <meta property="og:description" content="Generates themes for Better Discord">
     <meta name="theme-color" content="#7289da">
     <meta property="og:image" content="https://i.imgur.com/F4HpfXc.png">
-    <title>Theme Generator • Neutron X</title>
+    <title>Theme Generator • Electro</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/menu.js" charset="utf-8"></script>
-    <script src="js/gen_neutron.js" charset="utf-8"></script>
+    <script src="js/gen_electro.js" charset="utf-8"></script>
     <script src="js/lang.js"></script>
     <script src="js/lingumania.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -22,7 +22,8 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/glyphicons.css">
     <style media="screen">
-      @import url("https://raw.githack.com/codedotspectra/themes/master/neutron/importCSS/xcore.css");
+      @import url("https://raw.githack.com/codedotspectra/themes/master/discordelectro/css/core.css");
+      .name-3YKhmS {line-height: 16px;}
     </style>
     <style media="screen" id="miniThemes">
 
@@ -57,17 +58,9 @@
               </button>
             </div>
           </div>
-          <!--<div class="row main-title" style="border-top: 1px solid #2f3237;">
-            <div class="col-sm-12">
-              <span class="title trsltImportTitle" style="margin-top:15px">Import a file</span>
-              <input type="file" name="importBtn" class="btn-import" id="importBtn" value="" onChange="readFile(this.files[0])">
-            </div>
-          </div>-->
           <div class="row menu-tab-main">
-            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('images')">images</div>
-            <div class="menu-tab-btn trsltBtnFont" onclick="switchTab('font')">font</div>
             <div class="menu-tab-btn trsltBtnColors" onclick="switchTab('colors')">colors</div>
-            <div class="menu-tab-btn trsltBtnTColors" onclick="switchTab('textColors')">text colors</div>
+            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('img')">images</div>
             <div class="menu-tab-btn trsltBtnBGColors" onclick="switchTab('bgColors')">background colors</div>
             <div class="menu-tab-btn trsltBtnMT" onclick="switchTab('mini')">mini-themes</div>
           </div>
@@ -106,40 +99,98 @@
             </div>
           </div>
         </div>
-        <div class="menu-tab" id="images">
+        <div class="menu-tab" id="colors">
           <div class="row go-back" onclick="switchTab('main')">
             <span class="glyphicon glyphicon-arrow-left"></span>
             <span class="trsltMENU">menu</span>
           </div>
           <div class="row menu-tab-content">
             <div class="col-sm-12">
-              <span class="title" class="trsltImgTitle01">Background Image</span>
-              <div class="form-group">
-                <select class="form-control" id="selectBImage" onchange="selectImageMethod(this.id)">
-                  <option value="url" class="trsltOptionURL">URL</option>
-                  <option value="file" class="trsltOptionFile">File</option>
-                </select>
-                <div class="img-container">
-                  <div class="container-input" id="bImageUrlInput">
-                    <input class="form-control" type="text" id="bURL" value="" placeholder="direct URL" name="bgImage" onchange="verifyUrl(this.id)">
-                  </div>
-                  <div class="container-input" id="bImageFileInput" style="display:none;">
-                    <input type="file" accept=".png, .jpg, .jpeg, gif" id="bFile" onchange="verifyFile(this.id)">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <span class="title trsltColorPrimary01">Accent</span>
+                    <div class="input-group">
+                      <input type="color" id="CPcolorPrimary1" onchange="changeValue('colorPrimary1',this.value)" value="#e9cb00">
+                      <input class="form-control" type="text" id="colorPrimary1" placeholder="rgb, hex" onchange="changeValue('CPcolorPrimary1',this.value)" value="#20c577">
+                    </div>
                   </div>
                 </div>
               </div>
-
-              <p class="transparent redTransparent">
-                <span class="trsltLinkExemple">i.e.</span> http://www.website.com/image.jpg<br>
-                <span class="trsltImgAccepted">Accepted formats</span> :<br>
-                .jpg<br>
-                .png<br>
-                .gif<br>
-                <br>
-                <span class="trsltWarningImg01">GIFs are heavier on CPU than other formats</span><br><br>
-                <span class="trsltWarningImg02">Warning: some websites prevent images hotlink</span><br>
-                <span class="trsltWarningImg03">if the url don't work, download the image and use the file or upload it to imgur</span>
-              </p>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <span class="title trsltColorPrimary02">Accent (darker)</span>
+                    <div class="input-group">
+                      <input type="color" id="CPcolorPrimary2" onchange="changeValue('colorPrimary2',this.value)" value="#ffbc00">
+                      <input class="form-control" type="text" id="colorPrimary2" placeholder="rgb, hex" onchange="changeValue('CPcolorPrimary2',this.value)" value="#07a8c5">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row menu-tabs">
+            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('img')">images</div>
+            <div class="menu-tab-btn trsltBtnBGColors" onclick="switchTab('bgColors')">background colors</div>
+            <div class="menu-tab-btn trsltBtnMT" onclick="switchTab('mini')">mini-themes</div>
+          </div>
+        </div>
+        <div class="menu-tab" id="bgColors">
+          <div class="row go-back" onclick="switchTab('main')">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+            <span class="trsltMENU">menu</span>
+          </div>
+          <div class="row menu-tab-content">
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <span class="title trsltBGColorsTitle01">Background (bright)</span>
+                    <div class="input-group">
+                      <input type="color" id="CPNTBackgroundColor01" onchange="changeValue('NTBackgroundColor01',this.value)" value="#131517">
+                      <input class="form-control" type="text" id="NTBackgroundColor01" placeholder="rgb, hex" onchange="changeValue('CPNTBackgroundColor01',this.value)"value="#131517">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <span class="title trsltBGColorsTitle02">Background (Medium dark)</span>
+                    <div class="input-group">
+                      <input type="color" id="CPNTBackgroundColor02" onchange="changeValue('NTBackgroundColor02',this.value)"value="#101214">
+                      <input class="form-control" type="text" id="NTBackgroundColor02" placeholder="rgb, hex" onchange="changeValue('CPNTBackgroundColor02',this.value)"value="#101214">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <span class="title trsltBGColorsTitle03">Background (dark)</span>
+                    <div class="input-group">
+                      <input type="color" id="CPNTBackgroundColor03" onchange="changeValue('NTBackgroundColor03',this.value)"value="#0c0e0f">
+                      <input class="form-control" type="text" id="NTBackgroundColor03" placeholder="rgb, hex" onchange="changeValue('CPNTBackgroundColor03',this.value)"value="#0c0e0f">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row menu-tabs">
+            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('img')">images</div>
+            <div class="menu-tab-btn trsltBtnColors" onclick="switchTab('colors')">colors</div>
+            <div class="menu-tab-btn trsltBtnBGColors" onclick="switchTab('mini')">mini-themes</div>
+          </div>
+        </div>
+        <div class="menu-tab" id="img">
+          <div class="row go-back" onclick="switchTab('main')">
+            <span class="glyphicon glyphicon-arrow-left"></span>
+            <span class="trsltMENU">menu</span>
+          </div>
+          <div class="row menu-tab-content">
+            <div class="col-sm-12">
               <span class="title" class="trsltImgTitle02">Home Button Image</span>
               <div class="form-group">
                 <select class="form-control" id="selectHbImage" onchange="selectImageMethod(this.id)">
@@ -155,221 +206,23 @@
                   </div>
                 </div>
               </div>
-              <span class="title trsltImgTitle03">Image brightness</span>
-              <div class="row">
-                <div class="col-sm-6 text-left">0</div>
-                <div class="col-sm-6 text-right">1</div>
-              </div>
-              <input type="range" id="brightness" value="0.4" min="0" max="1" step="0.1" onchange="updatePreview()">
-              <code>0 = <span class="trsltImgBrightnessT">transparent</span> | 1 = <span class="trsltImgBrightnessB">black</span></code>
+              <p class="transparent redTransparent">
+                <span class="trsltLinkExemple">i.e.</span> http://www.website.com/image.jpg<br>
+                <span class="trsltImgAccepted">Accepted formats</span> :<br>
+                .jpg<br>
+                .png<br>
+                .gif<br>
+                <br>
+                <span class="trsltWarningImg01">GIFs are heavier on CPU than other formats</span><br><br>
+                <span class="trsltWarningImg02">Warning: some websites prevent images hotlink</span><br>
+                <span class="trsltWarningImg03">if the url don't work, download the image and use the file or upload it to imgur</span>
+              </p>
             </div>
           </div>
           <div class="row menu-tabs">
-            <div class="menu-tab-btn trsltBtnFont" onclick="switchTab('font')">font</div>
-            <div class="menu-tab-btn trsltBtnColors" onclick="switchTab('colors')">colors</div>
-            <div class="menu-tab-btn trsltBtnTColors" onclick="switchTab('textColors')">text colors</div>
-            <div class="menu-tab-btn trsltBtnBGColors" onclick="switchTab('bgColors')">background colors</div>
-            <div class="menu-tab-btn trsltBtnMT" onclick="switchTab('mini')">mini-themes</div>
-          </div>
-        </div>
-        <div class="menu-tab" id="font">
-          <div class="row go-back" onclick="switchTab('main')">
-            <span class="glyphicon glyphicon-arrow-left"></span>
-            <span class="trsltMENU">menu</span>
-          </div>
-          <div class="row menu-tab-content">
-            <div class="col-sm-12">
-              <span class="title trsltFontTitle01">custom font</span>
-              <div class="form-group">
-                <input class="form-control" type="text" id="customFont" value="" placeholder="Font name" onchange="updatePreview()">
-              </div>
-              <div class="infos">
-                <p class="trsltFontInfos01">Copy the name of the font you want to use</p>
-                <p class="transparent redTransparent trsltFontInfos02" style="padding:15px;">
-                  Fonts that are not listed on Google Fonts<br>
-                  are not supportedby this tool<br>
-                  You can find supported fonts here :<br>
-                  <a href="https://fonts.google.com/" target="_blank">Google Fonts</a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="row menu-tabs">
-            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('images')">images</div>
-            <div class="menu-tab-btn trsltBtnColors" onclick="switchTab('colors')">colors</div>
-            <div class="menu-tab-btn trsltBtnTColors" onclick="switchTab('textColors')">text colors</div>
-            <div class="menu-tab-btn trsltBtnBGColors" onclick="switchTab('bgColors')">background colors</div>
-            <div class="menu-tab-btn trsltBtnMT" onclick="switchTab('mini')">mini-themes</div>
-          </div>
-        </div>
-        <div class="menu-tab" id="colors">
-          <div class="row go-back" onclick="switchTab('main')">
-            <span class="glyphicon glyphicon-arrow-left"></span>
-            <span class="trsltMENU">menu</span>
-          </div>
-          <div class="row menu-tab-content">
-            <div class="col-sm-12">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <span class="title trsltColorPrimary01">Primary 1</span>
-                    <div class="input-group">
-                      <input type="color" id="CPcolorPrimary1" name="PrimaryColor01" onchange="changeValue('colorPrimary1',this.value)" value="#20c577">
-                      <input class="form-control" type="text" id="colorPrimary1" placeholder="rgb, hex" onchange="changeValue('CPcolorPrimary1',this.value)" value="#20c577">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <span class="title trsltColorPrimary02">Primary 2</span>
-                    <div class="input-group">
-                      <input type="color" id="CPcolorPrimary2" name="PrimaryColor02" onchange="changeValue('colorPrimary2',this.value)" value="#07a8c5">
-                      <input class="form-control" type="text" id="colorPrimary2" placeholder="rgb, hex" onchange="changeValue('CPcolorPrimary2',this.value)" value="#07a8c5">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <span class="title trsltColorLinks">Links</span>
-                    <div class="input-group">
-                      <input type="color" id="CPcolorLinks" name="links" onchange="changeValue('colorLinks',this.value)" value="#3366ff">
-                      <input class="form-control" type="text" id="colorLinks" placeholder="rgb, hex" onchange="changeValue('CPcolorLinks',this.value)" value="#3366ff">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row menu-tabs">
-            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('images')">images</div>
-            <div class="menu-tab-btn trsltBtnColors" onclick="switchTab('font')">font</div>
-            <div class="menu-tab-btn trsltBtnTColors" onclick="switchTab('textColors')">text colors</div>
-            <div class="menu-tab-btn trsltBtnBGColors" onclick="switchTab('bgColors')">background colors</div>
-            <div class="menu-tab-btn trsltBtnMT" onclick="switchTab('mini')">mini-themes</div>
-          </div>
-        </div>
-        <div class="menu-tab" id="textColors">
-          <div class="row go-back" onclick="switchTab('main')">
-            <span class="glyphicon glyphicon-arrow-left"></span>
-            <span class="trsltMENU">menu</span>
-          </div>
-          <div class="row menu-tab-content">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <span class="title trsltTColorsTitle01">Chat</span>
-                <div class="input-group">
-                  <input type="color" id="CPchatTextColor" name="ChatTextColor" onchange="changeValue('chatTextColor',this.value)" value="#ffffff">
-                  <input class="form-control" type="text" id="chatTextColor" placeholder="rgb, rgba, hex, hsl, hsla" onchange="changeValue('CPchatTextColor',this.value)" value="hsla(0, 100%, 100%, 1)">
-                </div>
-              </div>
-              <div class="form-group">
-                <span class="title trsltTColorsTitle02">Role title</span>
-                <div class="input-group">
-                  <input type="color" id="CProleTitleColor" name="RoleTitleColor" onchange="changeValue('roleTitleColor',this.value)" value="#ffffff">
-                  <input class="form-control" type="text" id="roleTitleColor" placeholder="rgb, rgba, hex, hsl, hsla" onchange="changeValue('CProleTitleColor',this.value)" value="hsla(0, 100%, 100%, .95)">
-                </div>
-              </div>
-              <div class="form-group">
-                <span class="title trsltTColorsTitle03">User Presence</span>
-                <div class="input-group">
-                  <input type="color" id="CPuserPlayingColor" name="" onchange="changeValue('userPlayingColor',this.value)" value="#ffffff">
-                  <input class="form-control" type="text" id="userPlayingColor" placeholder="rgb, rgba, hex, hsl, hsla" onchange="changeValue('CPuserPlayingColor',this.value)" value="hsla(0, 100%, 100%, .6)">
-                </div>
-              </div>
-              <div class="form-group">
-                <span class="title trsltTColorsTitle04">Channel Selected</span>
-                <div class="input-group">
-                  <input type="color" id="CPchannelSelectedColor" name="NTBackgroundColor04" onchange="changeValue('channelSelectedColor',this.value)" value="#ffffff">
-                  <input class="form-control" type="text" id="channelSelectedColor" placeholder="rgb, rgba, hex, hsl, hsla" onchange="changeValue('CPchannelSelectedColor',this.value)" value="hsla(0, 100%, 100%, .95)">
-                </div>
-              </div>
-              <div class="form-group">
-                <span class="title trsltTColorsTitle05">Channel Default</span>
-                <div class="input-group">
-                  <input type="color" id="CPchannelDefaultColor" onchange="changeValue('channelDefaultColor',this.value)" value="#ffffff">
-                  <input class="form-control" type="text" id="channelDefaultColor" placeholder="rgb, rgba, hex, hsl, hsla" onchange="changeValue('CPchannelDefaultColor',this.value)" value="hsla(0, 100%, 100%, .6)">
-                </div>
-              </div>
-              <div class="form-group">
-                <span class="title trsltTColorsTitle06">Channel Muted</span>
-                <div class="input-group">
-                  <input type="color" id="CPchannelDarkColor" onchange="changeValue('channelDarkColor',this.value)" value="#ffffff">
-                  <input class="form-control" type="text" id="channelDarkColor" placeholder="rgb, rgba, hex, hsl, hsla" onchange="changeValue('CPchannelDarkColor',this.value)" value="hsla(0, 100%, 100%, .2)">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row menu-tabs">
-            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('images')">images</div>
-            <div class="menu-tab-btn trsltBtnFont" onclick="switchTab('font')">font</div>
             <div class="menu-tab-btn trsltBtnColors" onclick="switchTab('colors')">colors</div>
             <div class="menu-tab-btn trsltBtnBGColors" onclick="switchTab('bgColors')">background colors</div>
-            <div class="menu-tab-btn trsltBtnMT" onclick="switchTab('mini')">mini-themes</div>
-          </div>
-        </div>
-        <div class="menu-tab" id="bgColors">
-          <div class="row go-back" onclick="switchTab('main')">
-            <span class="glyphicon glyphicon-arrow-left"></span>
-            <span class="trsltMENU">menu</span>
-          </div>
-          <div class="row menu-tab-content">
-            <div class="col-sm-12">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <span class="title trsltBGColorsTitle01">Background 01 (bright)</span>
-                    <div class="input-group">
-                      <input type="color" id="CPNTBackgroundColor01" onchange="changeValue('NTBackgroundColor01',this.value)" value="#3a3f4b">
-                      <input class="form-control" type="text" id="NTBackgroundColor01" placeholder="rgb, hex" onchange="changeValue('CPNTBackgroundColor01',this.value)"value="#3a3f4b">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <span class="title trsltBGColorsTitle02">Background 02 (less bright)</span>
-                    <div class="input-group">
-                      <input type="color" id="CPNTBackgroundColor02" onchange="changeValue('NTBackgroundColor02',this.value)"value="#2b3039">
-                      <input class="form-control" type="text" id="NTBackgroundColor02" placeholder="rgb, hex" onchange="changeValue('CPNTBackgroundColor02',this.value)"value="#2b3039">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <span class="title trsltBGColorsTitle03">Background 03 (dark)</span>
-                    <div class="input-group">
-                      <input type="color" id="CPNTBackgroundColor03" onchange="changeValue('NTBackgroundColor03',this.value)"value="#282c34">
-                      <input class="form-control" type="text" id="NTBackgroundColor03" placeholder="rgb, hex" onchange="changeValue('CPNTBackgroundColor03',this.value)"value="#282c34">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <span class="title trsltBGColorsTitle04">Background 04 (super dark)</span>
-                    <div class="input-group">
-                      <input type="color" id="CPNTBackgroundColor04" onchange="changeValue('NTBackgroundColor04',this.value)"value="#21252c">
-                      <input class="form-control" type="text" id="NTBackgroundColor04" placeholder="rgb, hex" onchange="changeValue('CPNTBackgroundColor04',this.value)"value="#21252c">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row menu-tabs">
-            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('images')">images</div>
-            <div class="menu-tab-btn trsltBtnFont" onclick="switchTab('font')">font</div>
-            <div class="menu-tab-btn trsltBtnColors" onclick="switchTab('colors')">colors</div>
-            <div class="menu-tab-btn trsltBtnTColors" onclick="switchTab('textColors')">text colors</div>
-            <div class="menu-tab-btn trsltBtnBGColors" onclick="switchTab('mini')">mini-themes</div>
+            <div class="menu-tab-btn trsltBtnMT" onclick="switchTab('mini')">Mini-themes</div>
           </div>
         </div>
         <div class="menu-tab" id="mini">
@@ -383,7 +236,6 @@
                 <span class="title trsltMTTitle01">Status style</span>
                 <select class="custom-select" id="statusStyles" style="margin:15px 0 15px 0;" onchange="updateMiniThemes()">
                   <option value="default">Default</option>
-                  <option value="rounded">Rounded</option>
                   <option value="squared">Squared</option>
                 </select>
               </div>
@@ -393,34 +245,6 @@
                   <input type="checkbox" id="dss" onclick="updateMiniThemes()">
                   <span class="checkmark"></span><span class="trsltMTCheckbox01">Servers</span>
                 </label>
-                <label class="checkboxx">
-                  <input type="checkbox" id="dstb" onclick="updateMiniThemes()">
-                  <span class="checkmark"></span><span class="trsltMTCheckbox02">Top Bar</span>
-                </label>
-              </div>
-              <div class="mt-container">
-                <span class="title trsltMTTitle03">Server Grid</span>
-                <label class="checkboxx">
-                  <input type="checkbox" id="scmt" onclick="checkMT('sg')">
-                  <span class="checkmark"></span><span class="trsltMTCheckbox03">Server Columns</span>
-                </label>
-                <div class="form-group">
-                  <input class="form-control" type="text" id="scmtNb" placeholder="Number of columns (1 - 6)" onchange="updatePreview()">
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="text" id="scmtSS" placeholder="Server icons size (default 50)" onchange="updatePreview()">
-                </div>
-              </div>
-              <div class="mt-container">
-                <span class="title trsltMTTitle06">Horizontal server list</span>
-                <label class="checkboxx">
-                  <input type="checkbox" id="hsl" onclick="checkMT('hsl')">
-                  <span class="checkmark"></span><span class="trsltMTCheckbox07">Horizontal server list</span>
-                </label>
-                <div class="form-group">
-                  <input class="form-control" type="text" id="hslSize" placeholder="Server icons size (default 45)" onchange="updatePreview()">
-                </div>
-                <p class="transparent warningTransparent">preview is fucked, but it works fine</p>
               </div>
               <div class="mt-container">
                 <span class="title trsltMTTitle04">Compact Lists</span>
@@ -430,24 +254,15 @@
                 </label>
                 <label class="checkboxx">
                   <input type="checkbox" id="cml" onclick="updateMiniThemes()">
-                  <span class="checkmark"></span><span class="trsltMTCheckbox05">Members</span>
-                </label>
-              </div>
-              <div class="mt-container">
-                <span class="title trsltMTTitle05">Other</span>
-                <label class="checkboxx">
-                  <input type="checkbox" id="stb" onclick="updateMiniThemes()">
-                  <span class="checkmark"></span><span class="trsltMTCheckbox06">See Trough Background</span>
+                  <span class="checkmark"></span><span class="trsltMTCheckbox05">Member</span>
                 </label>
               </div>
             </div>
           </div>
           <div class="row menu-tabs">
-            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('images')">images</div>
-            <div class="menu-tab-btn trsltBtnFont" onclick="switchTab('font')">font</div>
             <div class="menu-tab-btn trsltBtnColors" onclick="switchTab('colors')">colors</div>
-            <div class="menu-tab-btn trsltBtnTColors" onclick="switchTab('textColors')">text colors</div>
             <div class="menu-tab-btn trsltBtnBGColors" onclick="switchTab('bgColors')">background colors</div>
+            <div class="menu-tab-btn trsltBtnImages" onclick="switchTab('img')">images</div>
           </div>
         </div>
       </div>

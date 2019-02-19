@@ -67,6 +67,7 @@
           </div>
           <div class="row social-container">
             <div class="col-sm-12 text-center">
+              <p style="margin-top:10px">Social medias / Donate</p>
               <ul class="social-links">
                 <li class="paypal">
                   <a href="https://paypal.me/JackNeth" target="_blank"><span class="icon-paypal"></span></a>
@@ -78,6 +79,7 @@
                   <a href="https://github.com/codedotspectra" target="_blank"><span class="icon-github"></span></a>
                 </li>
               </ul>
+              <p style="margin-top:10px">Donating is NOT NECESSARY but very much appreciated <3</p>
             </div>
           </div>
           <div class="row">
@@ -85,9 +87,10 @@
               <p>2019 • Jack "Spectra" Neth</p>
               <hr>
               <p>
-                Thanks to Qwersad for the javascript file images codes<br>
+                Thanks to <a href="https://github.com/qwerasd205" target="_blank">Qwersad</a> for the javascript file images codes<br>
                 Thanks to Mioni for the javascript download code<br>
-                Thanks to Satoru for the compact channels list mini theme base
+                Thanks to <a href="https://github.com/mwittrien" target="_blank">DevilBro</a> for the server columns mini themes<br>
+                Thnaks to <a href="https://github.com/Gibbu" target="_blank">Gibbu</a> for the horizontal server list minitheme
               </p>
             </div>
           </div>
@@ -209,15 +212,26 @@
               <div class="mt-container">
                 <span class="title">Server Grid</span>
                 <label class="checkboxx">
-                  <input type="checkbox" id="scmt" onclick="updateMiniThemes()">
+                  <input type="checkbox" id="scmt" onclick="checkMT('sg')">
                   <span class="checkmark"></span>Server Columns
                 </label>
                 <div class="form-group">
-                  <input class="form-control" value="2" type="text" id="scmtNb" placeholder="Number of columns" onchange="updatePreview()">
+                  <input class="form-control" type="text" id="scmtNb" placeholder="Number of columns (1 - 6)" onchange="updatePreview()">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" value="50" type="text" id="scmtSS" placeholder="Server icons size" onchange="updatePreview()">
+                  <input class="form-control" type="text" id="scmtSS" placeholder="Server icons size (default 50)" onchange="updatePreview()">
                 </div>
+              </div>
+              <div class="mt-container">
+                <span class="title trsltMTTitle06">Horizontal server list</span>
+                <label class="checkboxx">
+                  <input type="checkbox" id="hsl" onclick="checkMT('hsl')">
+                  <span class="checkmark"></span><span class="trsltMTCheckbox07">Horizontal server list</span>
+                </label>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="hslSize" placeholder="Server icons size (default 45)" onchange="updatePreview()">
+                </div>
+                <p class="transparent warningTransparent">preview is fucked, but it works fine</p>
               </div>
               <div class="mt-container">
                 <span class="title">Compact Lists</span>
@@ -238,9 +252,6 @@
                 </label>
               </div>
               <div class="mt-container">
-                <p class="transparent warningTransparent">
-                  Preview might be buggy with server grids
-                </p>
                 <p class="transparent redTransparent">
                   You need to enable "Enable Transparency" option<br>
                   in BetterDiscord setting (and restart)<br>
@@ -296,5 +307,8 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      checkBrowser();
+    </script>
   </body>
 </html>

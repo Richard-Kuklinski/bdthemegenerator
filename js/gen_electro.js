@@ -1,74 +1,51 @@
-function generateCode() {
+function generateCode(homebutton) {
   let params = {
+      hbimage: homebutton,
       pcolor1: document.getElementById('colorPrimary1').value,
       pcolor1t: document.getElementById('colorPrimary1').value,
-      textColor: document.getElementById('textColor').value,
-      bgColor: document.getElementById('bgColor').value,
-      links: document.getElementById('colorLinks').value,
-      columns: document.getElementById('scmtNb').value,
-      serverSize: document.getElementById('scmtSS').value,
-      hslSize: document.getElementById('hslSize').value
+      pcolor2: document.getElementById('colorPrimary2').value,
+      bg1: document.getElementById('NTBackgroundColor01').value,
+      bg2: document.getElementById('NTBackgroundColor02').value,
+      bg3: document.getElementById('NTBackgroundColor03').value
   }
 
   var code = "";
 
   code += ":root {\n";
 
-  if(!params.pcolor1 == "" || params.pcolor1 == null) {
-    code += `--colorBrand: ${params.pcolor1};\n`;
+  if(!(params.hbimage == "" || params.hbimage == null)) {
+    code += `--HomeButtonImg: url('${params.hbimage}');\n`;
+  }
+  if(!(params.pcolor1 == "" || params.pcolor1 == null)) {
+    code += `--primary: ${params.pcolor1};\n`;
+  }
+  if(!(params.pcolor1t == "" || params.pcolor1t == null)) {
     if(params.pcolor1t.substring(0,1) == "#"){
       params.pcolor1t = hexToRgbA(params.pcolor1t);
     } else if(params.pcolor1t.substring(0,4) == "rgb(") {
-      params.pcolor1t = params.pcolor1t.replace(")",",.15)");
+      params.pcolor1t = params.pcolor1t.replace(")",",.25)");
       params.pcolor1t = params.pcolor1t.replace("rgb(","rgba(");
     }
-    code += `--colorBrandTransparent: `+hexToRgbA(params.pcolor1)+`;\n`;
+    code += `--primaryT: ${params.pcolor1t};\n`;
   }
-  if(!params.bgColor == "" || params.bgColor == null) {
-    code += `--bgColor05: `+ColorLuminance(params.bgColor, -0.35)+`;\n`;
-    code += `--bgColor04: `+ColorLuminance(params.bgColor, -0.15)+`;\n`;
-    code += `--bgColor03: ${params.bgColor};\n`;
-    code += `--bgColor01: `+ColorLuminance(params.bgColor, 0.3)+`;\n`;
+  if(!(params.pcolor2 == "" || params.pcolor2 == null)) {
+    code += `--primary2: ${params.pcolor2};\n`;
   }
-  if(!params.textColor == "" || params.textColor == null) {
-    code += `--ChatTextColor: `+ColorLuminance(params.textColor, 0.2)+`;\n`;
-    code += `--ChannelsSelectedTextColor: `+ColorLuminance(params.textColor, 0.3)+`;\n`;
-    code += `--ChannelsDefaultTextColor: ${params.textColor};\n`;
-    code += `--ChannelsDarkTextColor: `+ColorLuminance(params.textColor, -0.3)+`;\n`;
-    code += `--membersListTextsColor: `+ColorLuminance(params.textColor, -0.2)+`;\n`;
+  if(!(params.bg1 == "" || params.bg1 == null)) {
+    code += `--light: ${params.bg1};\n`;
   }
-  if(!(params.links == "" || params.links == null)) {
-    code += `--links: ${params.links};\n`;
+  if(!(params.bg2 == "" || params.bg2 == null)) {
+    code += `--medium: ${params.bg2};\n`;
   }
-  if(document.getElementById('scmt').checked) {
-    if(!(params.columns == "" || params.columns == null)) {
-      if(params.columns > 6) {params.columns = 6;}
-      code += `--columns: ${params.columns};\n`;
-    }
-    if(!(params.serverSize == "" || params.serverSize == null)) {
-      code += `--guildsize: ${params.serverSize};\n`;
-    }
+  if(!(params.bg3 == "" || params.bg3 == null)) {
+    code += `--dark: ${params.bg3};\n`;
   }
-  if(document.getElementById('hsl').checked) {
-    if(!(params.hslSize == "" || params.hslSize == null)) {
-      code+=`--HSL-size: ${params.hslSize}px;`
-    } else {
-      code+=`--HSL-size: 45px;`
-    }
-  }
+
   code += "}";
 
   return code;
 }
-function checkMT(mt) {
-  if(mt == "sg") {
-    if(document.getElementById('hsl').checked) document.getElementById("hsl").checked = false;
-  } else {
-    if(document.getElementById('scmt').checked) document.getElementById("scmt").checked = false;
-  }
-  document.getElementById('miniThemes').innerHTML = generateMiniThemes();
-  updatePreview();
-}
+
 function hexToRgbA(hex){
     var c;
     if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
@@ -77,31 +54,21 @@ function hexToRgbA(hex){
             c= [c[0], c[0], c[1], c[1], c[2], c[2]];
         }
         c= '0x'+c.join('');
-        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',.15)';
+        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',.25)';
     }
 }
-function ColorLuminance(hex, lum) {
-  hex = String(hex).replace(/[^0-9a-f]/gi, '');
-  if (hex.length < 6) {
-    hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-  }
-  lum = lum || 0;
-  var rgb = "#", c, i;
-  for (i = 0; i < 3; i++) {
-    c = parseInt(hex.substr(i*2,2), 16);
-    c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-    rgb += ("00"+c).substr(c.length);
-  }
 
-  return rgb;
-}
 async function updatePreview() {
-  document.getElementById("preview").innerHTML = generateCode();
+  let hbBackground;
+  if (document.getElementById('selectHbImage').value == "file") {
+      hbBackground = await getBase64(document.getElementById('hbFile').files[0]);
+  } else {hbBackground = document.getElementById('hbURL').value;}
+
+  document.getElementById("preview").innerHTML = generateCode(hbBackground);
 }
 
 function changeValue(inputID, value) {
   document.getElementById(inputID).value = value;
-
   updatePreview();
 }
 
@@ -119,11 +86,14 @@ async function download() {
     presetName = presetName.trim().replace(/ /gi, "_");
   }
 
-  let code = `//META{"name":"${presetName}","description":"Generated by Spectra's Theme generator - Based on the Colorize Reborn Theme","author":"Spectra","version":"Auto Update"}*//\n`;
-  code += '@import url("https://raw.githack.com/codedotspectra/themes/master/colorize/importCSS/colorize.css");\n';
+  let code = `//META{"name":"${presetName}","description":"Generated by Spectra's Theme generator - Based on the Electro Theme","author":"Spectra","version":"Auto Update"}*//\n`;
+  code += '@import url("https://raw.githack.com/codedotspectra/themes/master/discordelectro/css/core.css");\n';
   code += generateMiniThemes();
-
-  code += generateCode();
+  let hbBackground;
+  if (document.getElementById('selectHbImage').value == "file") {
+      hbBackground = await getBase64(document.getElementById('hbFile').files[0]);
+  } else {hbBackground = document.getElementById('hbURL').value;}
+  code += generateCode(hbBackground);
 
   dlFile('text/css', code, `${presetName}.theme.css`);
 }
@@ -150,19 +120,17 @@ async function updateMiniThemes() {
 function generateMiniThemes() {
   let mt = "";
 
-  if(document.getElementById('scmt').checked) {
-    mt += "@import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/ServerColumns/ServerColumns.css);\n";
-  }
-
   if(document.getElementById('ccl').checked){
     mt += "@import url('https://raw.githack.com/codedotspectra/themes/master/mini-themes/compactChannelsList.css');\n";
   }
   if(document.getElementById('cml').checked) {
     mt += "@import url('https://raw.githack.com/codedotspectra/themes/master/mini-themes/compactMemberList.css');\n";
   }
-  if(document.getElementById('hsl').checked) {
-    mt += "@import url('https://gibbu.github.io/BetterDiscord-Themes/HorizontalServerlist/base.css');\n";
+
+  if(document.getElementById('dss').checked){
+    mt += "@import url('https://raw.githack.com/codedotspectra/themes/master/mini-themes/normalSizeGuildIcons.css');\n";
   }
+
   if(document.getElementById('statusStyles').value == "rounded"){
     mt += "@import url('https://raw.githack.com/codedotspectra/themes/master/mini-themes/statusRounded.css');\n";
   } else if (document.getElementById('statusStyles').value == "squared") {

@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Better Discord Theme Generator">
-    <meta property="og:locale" content="en_US">
-    <meta property="og:description" content="Generates themes for Better Discord">
+    <meta property="og:title" content="Générateur de thèmes pour BetterDiscord">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:description" content="Génère des thèmes Discord">
     <meta name="theme-color" content="#7289da">
     <meta property="og:image" content="https://i.imgur.com/F4HpfXc.png">
-    <title>Theme Generator</title>
+    <title>Générateur de thèmes</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/glyphicons.css">
+    <link rel="icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/glyphicons.css">
   </head>
   <body>
     <div class="row menu-wrapper-fixed" id="content-wrapper">
@@ -23,47 +23,47 @@
         <div class="menu-tab" style="transform:translateX(0);">
           <div class="row theme-infos" style="border-top:none;border-bottom:1px solid #0c0d0e;">
             <div class="col-sm-12">
-              <span class="title">BetterDiscord Theme generator</span>
-              <p>Choose a base theme and start creating your theme</p>
+              <span class="title">Générateur de thèmes pour BetterDiscord</span>
+              <p>Choisisez un thème de base et commencez à le modifier</p>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12 support-container">
-              <span class="title">Language</span>
-              <a href="https://codedotspectra.github.io/bdthemegenerator/fr/">
-                <img src="img/fr.png" alt="Français" width="50" height="30" style="border-radius:4px;">
+              <span class="title">Langue</span>
+              <a href="https://codedotspectra.github.io/bdthemegenerator/">
+                <img src="../img/us.png" alt="English" width="50" height="30" style="border-radius:4px;">
               </a>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12 support-container">
-              <span class="title">What's new ?</span>
+              <span class="title">Quoi de neuf ?</span>
               <ul>
-                <li>Added electro as a base theme</li>
-                <li>Added chemical as a base theme</li>
-                <li>Added horizontal server list mini-theme</li>
-                <li>If your browser does not support this tool, you'll get notified</li>
+                <li>Ajout : thème Electro</li>
+                <li>Ajout : thème Chemical</li>
+                <li>Ajout : mini thème pour la liste des serveurs horizontale</li>
+                <li>Si votre navigateur ne supporte pas cet outils, vous serrez notifié</li>
               </ul>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12 support-container">
-              <span class="title">Upcoming features</span>
+              <span class="title">Prochaines mises à jour</span>
               <ul>
-                <li>More base themes</li>
-                <li>More languages available</li>
-                <li>"import" button to edit generated themes</li>
+                <li>Plus de thèmes</li>
+                <li>Plus de traductions</li>
+                <li>Un bouton "importer" pour editer un theme genéré</li>
               </ul>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12 support-container">
-              <a href="https://discord.gg/Y8ZVyXz/" class="btn btn-support">Find Help / SUGGEST A THEME</a>
+              <a href="https://discord.gg/Y8ZVyXz/" class="btn btn-support">Aide / Proposer un thème</a>
             </div>
           </div>
           <div class="row social-container">
             <div class="col-sm-12 text-center">
-              <p style="margin-top:10px">Social medias / Donate</p>
+              <p style="margin-top:10px">Réseaux sociaux / Faire un don</p>
               <ul class="social-links">
                 <li class="paypal">
                   <a href="https://paypal.me/JackNeth" target="_blank"><span class="icon-paypal"></span></a>
@@ -75,7 +75,7 @@
                   <a href="https://github.com/codedotspectra" target="_blank"><span class="icon-github"></span></a>
                 </li>
               </ul>
-              <p style="margin-top:10px">Donating is NOT NECESSARY but very much appreciated <3</p>
+              <p style="margin-top:10px">les donnations ne sont PAS NESSECAIRES mais très appréciées <3</p>
             </div>
           </div>
           <div class="row">
@@ -83,10 +83,9 @@
               <p>2019 • Jack "Spectra" Neth</p>
               <hr>
               <p>
-                Thanks to <a href="https://github.com/qwerasd205" target="_blank">Qwersad</a> for the javascript file images codes<br>
-                Thanks to Mioni for the javascript download code<br>
-                Thanks to <a href="https://github.com/mwittrien" target="_blank">DevilBro</a> for the server columns mini themes<br>
-                Thnaks to <a href="https://github.com/Gibbu" target="_blank">Gibbu</a> for the horizontal server list minitheme
+                Merci à <a href="https://github.com/qwerasd205" target="_blank">Qwersad</a> et à Mioni pour une partie du code js<br>
+                Merci à <a href="https://github.com/mwittrien" target="_blank">DevilBro</a> pour la liste de serveur multi colonnes<br>
+                Merci à <a href="https://github.com/Gibbu" target="_blank">Gibbu</a> pour la liste de serveurs horizontale
               </p>
             </div>
           </div>
@@ -95,7 +94,7 @@
       <div class="col-sm-9 bases-scroller" id="bases-wrapper">
         <div class="row choose">
           <div class="col-sm-12 text-left">
-            <span class="title">Choose a base theme (scroll down to see all themes)</span>
+            <span class="title">Choisisez un thème de base (scroll pour voir tous les thèmes)</span>
           </div>
         </div>
         <div class="row">
@@ -110,10 +109,10 @@
                 <div class="col-sm-7">
                   <h1>Neutron X</h1>
                   <p>
-                    An enhanced version of discord<br>
-                    More compact & highly customizable
+                    Une version améliorée de Discord<br>
+                    Plus compact et très personnalisable
                   </p>
-                  by <span class="author">Spectra</span>
+                  par <span class="author">Spectra</span>
                 </div>
               </div>
             </a>
@@ -131,10 +130,10 @@
                 <div class="col-sm-7">
                   <h1>Dunes</h1>
                   <p>
-                    Minimalist, rounded & smooth<br>
-                    Dunes is a simple & clean theme
+                    Minimaliste et arrondit<br>
+                    Dunes est un thème simple et épuré
                   </p>
-                  by <span class="author">Spectra</span>
+                  par <span class="author">Spectra</span>
                 </div>
               </div>
             </a>
@@ -152,11 +151,10 @@
                 <div class="col-sm-7">
                   <h1>Colorize</h1>
                   <p>
-                    Colorize let you have the default discord ui<br>
-                    it allows you to change the backgrounds & texts colors
+                    Colorize permet de garder l'interface Discord par défaut et de changer les couleurs
                   </p>
-                  by <span class="author">Spectra</span>
-                  Original by <span class="author author-original">Maple</span>
+                  par <span class="author">Spectra</span>
+                  Thème original <span class="author author-original">Maple</span>
                 </div>
               </div>
             </a>
@@ -174,10 +172,10 @@
                 <div class="col-sm-7">
                   <h1>Electro</h1>
                   <p>
-                    Discord Electro is compact, squared & minimalist<br>
-                    It adds new icons & animations
+                    Discord Electro est compact, carré & minimaliste<br>
+                    Le thème ajoute des nouveau iconese et animations
                   </p>
-                  by <span class="author">Spectra</span>
+                  par <span class="author">Spectra</span>
                 </div>
               </div>
             </a>
@@ -195,9 +193,9 @@
                 <div class="col-sm-7">
                   <h1>Chemical</h1>
                   <p>
-                    compact, squared & minimalist<br>
+                    compact, carré & minimaliste<br>
                   </p>
-                  by <span class="author">Spectra</span>
+                  par <span class="author">Spectra</span>
                 </div>
               </div>
             </a>

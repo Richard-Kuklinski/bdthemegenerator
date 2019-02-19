@@ -8,15 +8,15 @@ function checkBrowser() {
   let isBlink = (isChrome || isOpera) && !!window.CSS;
 
   if(isEdge) {
-    alert("Your browser does not support this tool correctly, however, if you realy want to user this browser, you'll have to rename the downloaded file to : name.theme.css");
+    alert("Votre navigateur ne supporte pas cet outils correctement, toutefois, si vous voulez vraiment utilisez ce navigateur, vous devrez renommer le fichier comme ceci : nom.theme.css");
     return;
   }
   if(isIE) {
-    alert("Your browser does not support this tool correctly, please use another browser like : Chrome, Firefox, Brave, Safari, Opera, etc..");
+    alert("Votre navigateur ne supporte pas cet outils, utilisez un autre navigateur : Chrome, Firefox, Brave, Safari, Opera, etc..");
     return;
   }
   if(!isFirefox && !isChrome && !isSafari && !isOpera && !isBlink) {
-    alert('Your browser may not support this tool correctly, if you have problems downloading the file, please use another browser like : Chrome, Firefox, Brave, Safari, Opera, etc..');
+    alert('Votre navigateur ne supporte pas cet outils correctement, si vous avez des problèmes pour télécharger le fichier, utilisez un autre navigateur : Chrome, Firefox, Brave, Safari, Opera, etc..');
     return;
   }
 }
@@ -72,11 +72,11 @@ function testName() {
       inputError.innerHTML = "";
       btn.removeAttribute("disabled");
     } else {
-      inputError.innerHTML = "Name can only contain letters & numbers";
+      inputError.innerHTML = "Le nom ne peut contenir que des lettres et des chiffres";
       btn.setAttribute("disabled", "true");
     }
   } else {
-    inputError.innerHTML = "You must enter a name";
+    inputError.innerHTML = "Vous devez entrer un nom pour votre thème";
     btn.setAttribute("disabled", "true");
   }
 }

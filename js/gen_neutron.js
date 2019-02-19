@@ -21,7 +21,8 @@ function generateCode(background, homebutton) {
       bg3: document.getElementById('NTBackgroundColor03').value,
       bg4: document.getElementById('NTBackgroundColor04').value,
       columns: document.getElementById('scmtNb').value,
-      serverSize: document.getElementById('scmtSS').value
+      serverSize: document.getElementById('scmtSS').value,
+      hslSize: document.getElementById('hslSize').value
   }
 
   var code = "";
@@ -100,6 +101,13 @@ function generateCode(background, homebutton) {
     }
     if(!(params.serverSize == "" || params.serverSize == null)) {
       code += `--guildsize: ${params.serverSize};\n`;
+    }
+  }
+  if(document.getElementById('hsl').checked) {
+    if(!(params.hslSize == "" || params.hslSize == null)) {
+      code+=`--HSL-size: ${params.hslSize}px;`
+    } else {
+      code+=`--HSL-size: 45px;`
     }
   }
 
@@ -191,6 +199,16 @@ async function updateMiniThemes() {
   document.getElementById('miniThemes').innerHTML = generateMiniThemes();
 }
 
+function checkMT(mt) {
+  if(mt == "sg") {
+    if(document.getElementById('hsl').checked) document.getElementById("hsl").checked = false;
+  } else {
+    if(document.getElementById('scmt').checked) document.getElementById("scmt").checked = false;
+  }
+  document.getElementById('miniThemes').innerHTML = generateMiniThemes();
+  updatePreview();
+}
+
 function generateMiniThemes() {
   let mt = "";
 
@@ -211,7 +229,9 @@ function generateMiniThemes() {
   if(document.getElementById('cml').checked) {
     mt += "@import url('https://raw.githack.com/codedotspectra/themes/master/mini-themes/compactMemberList.css');\n";
   }
-
+  if(document.getElementById('hsl').checked) {
+    mt += "@import url('https://gibbu.github.io/BetterDiscord-Themes/HorizontalServerlist/base.css');\n";
+  }
   if(document.getElementById('stb').checked) {
     mt += "@import url('https://raw.githack.com/codedotspectra/themes/master/mini-themes/seeThroughBackground.css');\n";
   }
